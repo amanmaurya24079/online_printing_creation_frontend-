@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const image_path = require('../images/logo.jpeg')
 const AboutPage = () => {
   const navigate = useNavigate();
@@ -66,7 +67,6 @@ const AboutPage = () => {
         </div>
 
       </section>
-
       {/* Button to Open About Modal */}
       <button
         onClick={(e) => {
@@ -76,7 +76,16 @@ const AboutPage = () => {
       >
         About Us
       </button>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7155178841161511"
+    crossorigin="anonymous"></script>
 
+<ins class="adsbygoogle"
+    //style="display:inline-block;width:728px;height:90px"
+    data-ad-client="ca-pub-7155178841161511"
+    data-ad-slot="1420801333"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
       {/* About Us Modal */}
       {showAboutModal && (
         <div className="fixed top-4 right-4 bg-gray-900  p-4 rounded-md shadow-md" onClick={(e)=> e.stopPropagation()}>
