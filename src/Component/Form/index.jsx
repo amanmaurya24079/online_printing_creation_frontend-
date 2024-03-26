@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import Navbar from '../Navbar';
 const PrintForm = () => {
   
 const navigate = useNavigate();
@@ -44,7 +44,7 @@ const [total_price,setTotal_price ]=useState(0)
       console.log(data.profile_url);
       setUserInfo(prevUserInfo => ({
         ...prevUserInfo,
-        pdfOrPhoto: data.profile_url
+        pdfOrPhoto: data.profile_url+' '
       }));
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -77,12 +77,12 @@ const [total_price,setTotal_price ]=useState(0)
       return printOption === 'oneSide' ? pdfPageCount * 0.75 : pdfPageCount * 1.5;
       
     } else if (selectedService === 'shirtPrint') {
-      return 300;
+      return 149;
     } else if (selectedService === 'cupPrint') {
-      return 100;
+      return 199;
     }
     else if(selectedService ==='PhotoFraming'){
-      return 100
+      return 249;
     }
 
     return 0; // Default to 0 if no service selected or invalid PDF
@@ -102,7 +102,7 @@ const [total_price,setTotal_price ]=useState(0)
     }));
    
     try {
-      const response = await fetch(`https://online-printing-creation.onrender.com/send_mail`, {
+      const response = await fetch(`https://online-printing-creation.onrender.com/send_mail?email=${userInfo.email}&link=${JSON.stringify(userInfo)}`, {
         method: 'POST',
         body: JSON.stringify(userInfo)
       });
@@ -121,8 +121,12 @@ const [total_price,setTotal_price ]=useState(0)
   
 
   return (
+    <>
+    <Navbar/>
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+      
       <div className="bg-gray-800 p-8 rounded-md shadow-md w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3">
+      
         <h1 className="text-2xl font-bold mb-4">  pleas fill the form </h1>
         <form onSubmit={handleSubmit}>
           {/* User Information Fields */}
@@ -268,6 +272,7 @@ const [total_price,setTotal_price ]=useState(0)
         </form>
       </div>
     </div>
+    </>
   );
 };
 
